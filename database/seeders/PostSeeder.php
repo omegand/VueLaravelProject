@@ -18,12 +18,14 @@ class PostSeeder extends Seeder
             [
                 'body' => 'Nesiseka man išviso',
                 'title' => 'Bandymas1',
+                'topicid' => '1',
             ]
         );
         Post::create(
             [
                 'body' => 'O gal sekasi?',
                 'title' => 'Bandymas2',
+                'topicid' => '2'
             ]
         );
     }

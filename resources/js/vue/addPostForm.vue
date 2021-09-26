@@ -25,7 +25,7 @@ export default {
         return;
       }
       axios
-        .post("api/post/store", {
+        .post("api/post", {
           post: this.post,
         })
         .then((response) => {
