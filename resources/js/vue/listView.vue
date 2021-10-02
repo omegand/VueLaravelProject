@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(post, index) in posts" :key="index">
-      <list-post :post="post" class="post" v-on:changed="$emit('reload')" />
+    <div v-for="(topic, index) in topics" :key="index">
+      <list-post :topic="topic" class="topic" v-on:changed="$emit('reload')" />
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 import listPost from "./listPost.vue";
 export default {
-  props: ["posts"],
+  props: ["topics"],
   components: {
     listPost,
   },
@@ -17,9 +17,11 @@ export default {
 </script>
 
 <style scoped>
-.post {
-  background: gray;
+.topic {
+  width:30%;
+  background: #a19495;
   padding: 5px;
   margin-top: 5px;
+  outline: 2px solid black;
 }
 </style>

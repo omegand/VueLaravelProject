@@ -33,3 +33,8 @@ Route::prefix('/topic/post')->group(function () {
     Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
     Route::delete('/{id}', 'App\Http\Controllers\PostController@deletePost');
 });
+
+Route::fallback(function(){
+    return response()->json([
+        'message' => 'Route does not exist, check the syntax?'], 404);
+});

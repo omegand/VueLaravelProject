@@ -1,10 +1,10 @@
 <template>
-  <div class="post">
+  <div class="topic">
     Title:
-    {{ post.title }}
+    {{ topic.title }}
     <br />
-    Body: {{ post.body }}
-    <button @click="removePost()" class="trash">
+    Description: {{ topic.desc }}
+    <button @click="removeTopic()" class="trash">
       <font-awesome-icon icon="trash" />
     </button>
   </div>
@@ -12,11 +12,11 @@
 
 <script>
 export default {
-  props: ["post"],
+  props: ["topic"],
   methods: {
-    removePost() {
+    removeTopic() {
       axios
-        .delete("api/post/" + this.post.id)
+        .delete("api/topic/" + this.topic.id)
         .then((response) => {
           if (response.status == 200) {
             this.$emit("changed");
@@ -30,15 +30,10 @@ export default {
 };
 </script>
 <style scoped>
-.post {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-}
 .trash {
-  background: gray;
-  border: none;
   color: red;
-  outline: none;
+  border: 5px;
+  background: #a19495;
+  outline: 0px;
 }
 </style>

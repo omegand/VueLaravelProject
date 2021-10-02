@@ -3,47 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\Models\Topic;
+use Facade\FlareClient\Http\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
     public function getTopics()
     {
-        return Topic::all();
+        $topics = Topic::all();
+        if ($topics->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+
+        else return $topics;
     }
     public function getTopic($id)
     {
-        return Topic::where('id',$id)->get();
+        $topic = Topic::where('id', $id)->get();
+        if ($topic->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else return $topic;
     }
 
     public function saveTopic(Request $request)
     {
         $new = new Topic;
-        $new->title = $request->topic["title"];
-        $new->desc = $request->topic["desc"];
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'desc' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['Klaida' => "Bloga sintaksė"], 400);
+        };
+        $new->title = $request->title;
+        $new->desc = $request->desc;
         $new->save();
         return $new;
     }
-    
+
     public function updateTopic(Request $request, $id)
     {
         $curr = Topic::find($id);
         if ($curr) {
-            $curr->title = $request->topic["title"];
-            $curr->desc = $request->topic["desc"];
+            $validator = Validator::make($request->all(), [
+                'title' => 'required',
+                'desc' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['Klaida' => "Bloga sintaksė"], 400);
+            };
+            $curr->title = $request->title;
+            $curr->desc = $request->desc;
             $curr->save();
             return $curr;
         }
-        return "doesn't exist";
-    }
+        return response()->json(['Klaida' => "Neegzistuoja arba blogas route."], 404);    }
 
     public function deleteTopic($id)
     {
         $topic = Topic::find($id);
         if ($topic) {
             $topic->delete();
-            return "deleted";
+            return response()->json(['Sekminga' => "Ištrinta."]);
         }
-        return "not found";
+        return response()->json(['Klaida' => "Neegzistuoja tema arba blogas route."], 404);
     }
 }

@@ -2,10 +2,10 @@
   <div class="everything">
     <div class="heading">
       <h2 id="title">Forum Frontend</h2>
-      <add-post-form :posts="posts" v-on:reload="getList()"/>
+      <add-post-form :topics="topics" v-on:reload="getList()"/>
     </div>
 
-    <list-view :posts="posts" v-on:reload="getList()"/>
+    <list-view :topics="topics" v-on:reload="getList()"/>
   </div>
 </template>
  
@@ -20,15 +20,15 @@ export default {
   },
   data: function () {
     return {
-      posts: [],
+      topics: [],
     };
   },
   methods: {
     getList() {
       axios
-        .get("api/post")
+        .get("api/topic")
         .then((response) => {
-          this.posts = response.data;
+          this.topics = response.data;
         })
         .catch((error) => {
           console.log(error);
@@ -48,9 +48,9 @@ export default {
 .heading {
   background: #e6e6e6;
   padding: 10px;
-  text-align: center;
+  text-align: left;
 }
 #title {
-  text-align: center;
+  text-align: left;
 }
 </style>
