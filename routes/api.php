@@ -36,5 +36,5 @@ Route::prefix('/topic/post')->group(function () {
 
 Route::fallback(function(){
     return response()->json([
-        'message' => 'Route does not exist, check the syntax?'], 404);
+        'message' => 'Route does not exist, check the syntax.'], 404);
 });

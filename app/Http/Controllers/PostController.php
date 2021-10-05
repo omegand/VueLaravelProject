@@ -5,46 +5,67 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
     public function getPosts($id)
     {
-        return Post::where('topicid',$id)->get();
+        $posts = Post::where('topicid', $id)->get();
+        if ($posts->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else return $posts;
     }
     public function getPost($id)
     {
-        return Post::where('id',$id)->get();
+        $post = Post::where('id', $id)->get();
+        if ($post->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else return $post;
     }
 
     public function savePost(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'topicid' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['Klaida' => "Bloga sintaksė"], 400);
+        };
         $newpost = new Post;
-        $newpost->title = $request->post["title"];
-        $newpost->body = $request->post["body"];
-        $newpost->topicid = $request->post["topicid"];
+        $newpost->title = $request->title;
+        $newpost->body = $request->body;
+        $newpost->topicid = $request->topicid;
         $newpost->save();
         return $newpost;
     }
-    public function updatePost(Request $request,$id)
+    public function updatePost(Request $request, $id)
     {
-        $currpost = Post::where('id',$id)->get()->first();
+        $currpost = Post::where('id', $id)->get()->first();
         if ($currpost) {
-            $currpost->title = $request->post["title"];
-            $currpost->body = $request->post["body"];
-            $currpost->topicid =$request->post["topicid"];
+            $validator = Validator::make($request->all(), [
+                'title' => 'required',
+                'body' => 'required',
+                'topicid' => 'required'
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['Klaida' => "Bloga sintaksė"], 400);
+            };
+            $currpost->title = $request->title;
+            $currpost->body = $request->body;
+            $currpost->topicid = $request->topicid;
             $currpost->save();
             return $currpost;
         }
-        return "doesn't exist";
+        return response()->json(['Klaida' => "Neegzistuoja postas arba blogas route."], 404);
     }
     public function deletePost($id)
     {
         $post = Post::find($id);
         if ($post) {
             $post->delete();
-            return "deleted";
+            return response()->json(['Sekminga' => "Ištrinta"]);
         }
-        return "not found";
+        return response()->json(['Klaida' => "Neegzistuoja postas arba blogas route."], 404);
     }
 }
