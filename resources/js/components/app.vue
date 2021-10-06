@@ -2,7 +2,9 @@
   <div class="everything">
     <div class="heading">
       <h2 id="title">Forum Frontend</h2>
-      <add-post-form :topics="topics" v-on:reload="getList()"/>
+    <!--
+    <add-post-form :topics="topics" v-on:reload="getList()"/>
+    -->
     </div>
 
     <list-view :topics="topics" v-on:reload="getList()"/>

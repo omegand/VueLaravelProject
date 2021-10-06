@@ -1,21 +1,12 @@
 require('./bootstrap');
 
-import Vue from 'vue';
-import App from './vue/app'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlusSquare,faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-library.add(faPlusSquare,faTrash)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+window.Vue = require('vue').default;
 
 
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('secret-component', require('./components/SecretComponent.vue').default);
+Vue.component('app', require('./components/app.vue').default);
 
-const app = new Vue(
-    {
-        el: '#app',
-        components: {App}
-    }
-);
+const app = new Vue({
+    el: '#app',
+});
