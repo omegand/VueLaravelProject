@@ -17,9 +17,12 @@ class PostController extends Controller
     }
     public function getUserPosts(Request $request)
     {
-        $posts = Post::where('topicid', $request->user()->id)->get();
-        if ($posts->isEmpty()) return response()->json(['Klaida' => "Vartotojas neturi postų arba įvyko kita klaida."], 404);
-        else return $posts;
+        if ($request->user()->admin) {
+            $posts = Post::where('topicid', $request->user()->id)->get();
+            if ($posts->isEmpty()) return response()->json(['Klaida' => "Vartotojas neturi postų arba įvyko kita klaida."], 404);
+            else return $posts;
+        }
+        else return response()->json(['Klaida' => "Vartotojas neturi teisių peržiūrėti tai."], 404);
     }
     public function getPost($id)
     {
