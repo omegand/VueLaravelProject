@@ -7,18 +7,16 @@ use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-Route::get('/secrets',[SecretController::class,'index']);
+
+Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
+Route::prefix('/topic/post')->group(function () {
+    Route::middleware('auth:sanctum')->get('/', [PostController::class, 'getUserPosts']);
+    Route::get('/{id}', [PostController::class, 'getPost']);
+    Route::post('/','App\Http\Controllers\PostController@savePost');
+    Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
+    Route::delete('/{id}', 'App\Http\Controllers\PostController@deletePost');
+});
 Route::prefix('/topic')->group(function () {
     Route::get('/', [TopicController::class, 'getTopics']);
     Route::get('/{id}', [TopicController::class, 'getTopic']);
@@ -26,16 +24,8 @@ Route::prefix('/topic')->group(function () {
     Route::put('/{id}', [TopicController::class, 'updateTopic']);
     Route::delete('/{id}', [TopicController::class, 'deleteTopic']);
 });
-Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
-Route::prefix('/topic/post')->group(function () {
-    Route::get('/{id}', [PostController::class, 'getPost']);
-    Route::post('/','App\Http\Controllers\PostController@savePost');
-    Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
-    Route::delete('/{id}', 'App\Http\Controllers\PostController@deletePost');
-});
 
-
-Route::prefix('/user')->group(function () {
+Route::group(['prefix' => 'user', 'middleware' => ['json']], function() {
     Route::get('/', [UserController::class, 'getusers']);
     Route::get('/{id}', [UserController::class, 'getuser']);
     Route::post('/',[UserController::class, 'saveuser']);

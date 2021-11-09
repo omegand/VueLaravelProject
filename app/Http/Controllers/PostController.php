@@ -15,6 +15,10 @@ class PostController extends Controller
         if ($posts->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
         else return $posts;
     }
+    public function getUserPosts(Request $request)
+    {
+        return Post::all();
+    }
     public function getPost($id)
     {
         $post = Post::where('id', $id)->get();

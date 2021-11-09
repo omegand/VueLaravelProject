@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('body')->nullable();
             $table->string('title')->nullable();
             $table->integer('topicid')->nullable();
+            $table->integer('userid')->nullable();        
         });
     }
 

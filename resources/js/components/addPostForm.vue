@@ -1,11 +1,6 @@
 <template>
   <div class="add">
     <input type="text" v-model="post.title" />
-    <font-awesome-icon
-      icon="plus-square"
-      @click="addPost()"
-      :class="[post.title ? 'active' : 'inactive', 'plus']"
-    />
   </div>
 </template>
 

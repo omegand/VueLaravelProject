@@ -1,25 +1,18 @@
 <template>
   <div class="everything">
     <div class="heading">
-      <h2 id="title">Forum Frontend</h2>
-    <!--
-    <add-post-form :topics="topics" v-on:reload="getList()"/>
-    -->
+      <h2 id="title" >Forum Frontend</h2>
+      <!--
+        <addpost :topics="topics" v-on:reload="getList()" />
     </div>
-
-    <list-view :topics="topics" v-on:reload="getList()"/>
+    <listview :topics="topics" v-on:reload="getList()" />
+    --></div>
+    <login />
   </div>
 </template>
  
 <script>
-import addPostForm from "./addPostForm";
-import listView from "./listView";
-
 export default {
-  components: {
-    addPostForm,
-    listView,
-  },
   data: function () {
     return {
       topics: [],
@@ -37,9 +30,9 @@ export default {
         });
     },
   },
-  created(){
+  created() {
     this.getList();
-  }
+  },
 };
 </script>
 <style scoped>
@@ -53,6 +46,6 @@ export default {
   text-align: left;
 }
 #title {
-  text-align: left;
+  text-align: center;
 }
 </style>
