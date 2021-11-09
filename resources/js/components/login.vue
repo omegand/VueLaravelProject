@@ -27,10 +27,12 @@
           </div>
         </form>
       </div>
-      <div v-if="topics.length > 0" >
+      <div v-if="topics.length > 0">
         <div class="topic" v-for="(topic, index) in topics" :key="index">
-          <h4>Post Title:</h4> {{topic.title}}
-          <h6>Post Description:</h6> {{topic.body}}
+          <h4>Post Title:</h4>
+          {{ topic.title }}
+          <h6>Post Description:</h6>
+          {{ topic.body }}
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@
 export default {
   data() {
     return {
-      result : "",
+      result: "",
       topics: [],
       formData: {
         email: "",
@@ -55,15 +57,15 @@ export default {
         axios
           .post("/login", this.formData)
           .then((response) => {
-            this.getTopics();
+            console.log("User signed in!");
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.log(error)); // credentials didn't match
       });
     },
     getTopics() {
       axios
         .get("/api/topic/post")
-        .then((response) => (console.log(response)));
+        .then((response) => (this.topics = response.data));
     },
   },
 };
@@ -72,10 +74,10 @@ export default {
 .form-row {
   margin-bottom: 12px;
 }
-.topic{
-  width:fit-content;
+.topic {
+  width: fit-content;
   border: 3px solid black;
-  padding:5px;
+  padding: 5px;
   margin: 10px;
 }
 </style>
