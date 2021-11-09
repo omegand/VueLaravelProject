@@ -17,7 +17,9 @@ class PostController extends Controller
     }
     public function getUserPosts(Request $request)
     {
-        return Post::all();
+        $posts = Post::where('topicid', $request->user()->id)->get();
+        if ($posts->isEmpty()) return response()->json(['Klaida' => "Vartotojas neturi postų arba įvyko kita klaida."], 404);
+        else return $posts;
     }
     public function getPost($id)
     {

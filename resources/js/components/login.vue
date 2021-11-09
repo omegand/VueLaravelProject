@@ -43,7 +43,6 @@
 export default {
   data() {
     return {
-      result: "",
       topics: [],
       formData: {
         email: "",
@@ -57,15 +56,13 @@ export default {
         axios
           .post("/login", this.formData)
           .then((response) => {
-            console.log("User signed in!");
+            this.getTopics();
           })
-          .catch((error) => console.log(error)); // credentials didn't match
+          .catch((error) => console.log(error));
       });
     },
     getTopics() {
-      axios
-        .get("/api/topic/post")
-        .then((response) => (this.topics = response.data));
+      axios.get("/api/topic/post").then((response) => this.topics = response.data);
     },
   },
 };

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
 Route::prefix('/topic/post')->group(function () {
-    Route::get('/', [PostController::class, 'getUserPosts']);
+    Route::middleware('auth:sanctum')->get('/', [PostController::class, 'getUserPosts']);
     Route::get('/{id}', [PostController::class, 'getPost']);
     Route::post('/','App\Http\Controllers\PostController@savePost');
     Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
