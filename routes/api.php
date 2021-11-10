@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
 Route::prefix('/topic/post')->group(function () {
-    Route::middleware('auth:sanctum')->get('/', [PostController::class, 'getUserPosts']);
     Route::get('/{id}', [PostController::class, 'getPost']);
     Route::post('/','App\Http\Controllers\PostController@savePost');
     Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
     Route::delete('/{id}', 'App\Http\Controllers\PostController@deletePost');
 });
+Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
 Route::prefix('/topic')->group(function () {
     Route::get('/', [TopicController::class, 'getTopics']);
     Route::get('/{id}', [TopicController::class, 'getTopic']);
@@ -26,6 +25,7 @@ Route::prefix('/topic')->group(function () {
 });
 
 Route::group(['prefix' => 'user', 'middleware' => ['json']], function() {
+    Route::get('/post', [PostController::class, 'getUserPosts']);
     Route::get('/', [UserController::class, 'getusers']);
     Route::get('/{id}', [UserController::class, 'getuser']);
     Route::post('/',[UserController::class, 'saveuser']);

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-6 offset-3" v-if="topics.length == 0">
+      <div class="col-6 offset-3" v-if="auth_user == null">
         <h3>Login</h3>
         <form action="#" @submit.prevent="handleLogin">
           <div class="form-row">
@@ -62,8 +62,14 @@ export default {
       });
     },
     getTopics() {
-      axios.get("/api/topic/post").then((response) => this.topics = response.data);
+      axios
+        .get("/api/user/post")
+        .then((response) => (this.topics = response.data));
     },
+  },
+  props: ["auth_user"],
+  created() {
+    console.log(this.auth_user);
   },
 };
 </script>

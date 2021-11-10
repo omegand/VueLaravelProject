@@ -13,7 +13,7 @@
 
 <body>
     <div class="flex-center position-ref full height" id="app">
-        <app></app>
+        <app :auth_user='@json($auth_user)'></app>
     </div>
 </body>
 <script src="{{mix('js/app.js')}}"></script>

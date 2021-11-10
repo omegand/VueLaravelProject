@@ -1,20 +1,25 @@
 <template>
   <div class="everything">
     <div class="heading">
-      <h2 id="title" >Forum Frontend</h2>
+      <h2 id="title">Forum Frontend</h2>
       <!--
         <addpost :topics="topics" v-on:reload="getList()" />
     </div>
     <listview :topics="topics" v-on:reload="getList()" />
     --></div>
-    <login />
+    <login :auth_user="auser" />
   </div>
 </template>
  
 <script>
 export default {
+  created() {
+    this.getList();
+  },
+  props: ["auth_user"],
   data: function () {
     return {
+      auser: this.auth_user,
       topics: [],
     };
   },
@@ -29,9 +34,6 @@ export default {
           console.log(error);
         });
     },
-  },
-  created() {
-    this.getList();
   },
 };
 </script>

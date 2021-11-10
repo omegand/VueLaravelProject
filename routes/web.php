@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('app');
+    return view('app')->with('auth_user',  auth('sanctum')->user());
 });
 
 Auth::routes();
