@@ -1,12 +1,12 @@
 <template>
   <div class="topic">
-    Title:
-    {{ topic.title }}
-    <br />
+    Title:    {{ topic.title }}
     Description: {{ topic.desc }}
+    <!--
     <button @click="removeTopic()" class="trash">
       <font-awesome-icon icon="trash" />
     </button>
+    -->
   </div>
 </template>
 
@@ -35,5 +35,12 @@ export default {
   border: 5px;
   background: #a19495;
   outline: 0px;
+}
+.topic{
+  background: #864879;
+  padding: 5px;
+  margin: 15px;
+  outline: 2px solid black;
+  color: #E9A6A6;
 }
 </style>

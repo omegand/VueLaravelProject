@@ -11,19 +11,21 @@ class PostController extends Controller
 {
     public function getPosts($id)
     {
-        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 404);
         $posts = Post::where('topicid', $id)->get();
         if ($posts->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
-        else return $posts;
+        else {
+            if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 403);
+            return $posts;
+        }
     }
     public function getUserPosts(Request $request)
     {
-        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 404);
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 403);
         if (auth('sanctum')->user()->admin) {
             $posts = Post::where('userid', $request->user()->id)->get();
             if ($posts->isEmpty()) return response()->json(['Klaida' => "Vartotojas neturi postų arba įvyko kita klaida."], 404);
             else return $posts;
-        } else return response()->json(['Klaida' => "Vartotojas neturi teisių peržiūrėti tai."], 404);
+        } else return response()->json(['Klaida' => "Vartotojas neturi teisių peržiūrėti tai."], 401);
     }
     public function getPost($id)
     {

@@ -15,7 +15,7 @@ Route::prefix('/topic/post')->group(function () {
     Route::put('/{id}', 'App\Http\Controllers\PostController@updatePost');
     Route::delete('/{id}', 'App\Http\Controllers\PostController@deletePost');
 });
-Route::get('/topic/{id}/post', [PostController::class, 'getPosts']);
+Route::get('/topic/{id}/post', [PostController::class,   'getPosts']);
 Route::prefix('/topic')->group(function () {
     Route::get('/', [TopicController::class, 'getTopics']);
     Route::get('/{id}', [TopicController::class, 'getTopic']);

@@ -24,5 +24,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'admin' => true,
         ]);
+        DB::table('users')->insert([
+            'name' => Str::random(10),
+            'email' => 'neadmin@gmail.com',
+            'password' => Hash::make('password'),
+            'admin' => false,
+        ]);
     }
 }

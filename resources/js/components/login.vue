@@ -27,14 +27,6 @@
           </div>
         </form>
       </div>
-      <div v-if="topics.length > 0">
-        <div class="topic" v-for="(topic, index) in topics" :key="index">
-          <h4>Post Title:</h4>
-          {{ topic.title }}
-          <h6>Post Description:</h6>
-          {{ topic.body }}
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -56,7 +48,7 @@ export default {
         axios
           .post("/login", this.formData)
           .then((response) => {
-            this.getTopics();
+            console.log(response);
           })
           .catch((error) => console.log(error));
       });
@@ -76,11 +68,5 @@ export default {
 <style scoped>
 .form-row {
   margin-bottom: 12px;
-}
-.topic {
-  width: fit-content;
-  border: 3px solid black;
-  padding: 5px;
-  margin: 10px;
 }
 </style>

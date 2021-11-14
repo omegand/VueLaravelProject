@@ -1,13 +1,12 @@
 <template>
   <div class="everything">
-    <div class="heading">
-      <h2 id="title">Forum Frontend</h2>
-      <!--
-        <addpost :topics="topics" v-on:reload="getList()" />
-    </div>
-    <listview :topics="topics" v-on:reload="getList()" />
-    --></div>
+    <div class="header">Forum Frontend</div>
+    <!--
     <login :auth_user="auser" />
+   
+        <addtopic :topics="topics" v-on:reload="getList()" />
+         -->
+    <topiclist :topics="topics" v-on:reload="getList()" />
   </div>
 </template>
  
@@ -37,17 +36,15 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .everything {
-  width: 350;
   margin: auto;
+  background: #1F1D36;
 }
-.heading {
-  background: #e6e6e6;
-  padding: 10px;
-  text-align: left;
-}
-#title {
+.header {
+  padding: 30px;
   text-align: center;
+  color: #E9A6A6;
+  font-size: 3em;
 }
 </style>
