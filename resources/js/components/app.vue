@@ -1,5 +1,6 @@
 <template>
   <div class="everything">
+    
     <div class="header">Forum Frontend</div>
     <!--
     <login :auth_user="auser" />
@@ -17,6 +18,7 @@
     <div v-if="showlist" class="row">
       <topiclist :topics="topics" v-on:reload="getList()" />
     </div>
+    <footvue/>
   </div>
 </template>
  
