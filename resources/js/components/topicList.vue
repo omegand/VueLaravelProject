@@ -1,5 +1,5 @@
 <template>
-  <div class="topic">
+  <div class="col-md-4 offset-md-4">
     <div v-for="(topic, index) in topics" :key="index">
       <topic :topic="topic" v-on:changed="$emit('reload')" />
     </div>
@@ -13,9 +13,4 @@ export default {
 </script>
 
 <style scoped>
-.topic {
-  background: #1F1D36;
-  padding: 5px;
-  margin-top: 5px;
-}
 </style>

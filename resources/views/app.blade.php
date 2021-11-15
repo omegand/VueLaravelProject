@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full height" id="app">
+    <div id="app">
         <app :auth_user='@json($auth_user)'></app>
     </div>
 </body>

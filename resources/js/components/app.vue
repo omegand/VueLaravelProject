@@ -6,7 +6,17 @@
    
         <addtopic :topics="topics" v-on:reload="getList()" />
          -->
-    <topiclist :topics="topics" v-on:reload="getList()" />
+    <addtopic />
+    <div style="text-align: center">
+      <Button
+        @toggle="toggleTopicList"
+        :text="showlist ? 'Close' : 'Show'"
+        :class="showlist ? 'btn btn-success' : 'btn btn-dark'"
+      />
+    </div>
+    <div v-if="showlist" class="row">
+      <topiclist :topics="topics" v-on:reload="getList()" />
+    </div>
   </div>
 </template>
  
@@ -20,9 +30,13 @@ export default {
     return {
       auser: this.auth_user,
       topics: [],
+      showlist: false,
     };
   },
   methods: {
+    toggleTopicList() {
+      this.showlist = !this.showlist;
+    },
     getList() {
       axios
         .get("api/topic")
@@ -38,13 +52,15 @@ export default {
 </script>
 <style>
 .everything {
-  margin: auto;
-  background: #1F1D36;
+  background: #1f1d36;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 .header {
   padding: 30px;
   text-align: center;
-  color: #E9A6A6;
+  color: #e9a6a6;
   font-size: 3em;
 }
 </style>

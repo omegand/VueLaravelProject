@@ -1,12 +1,12 @@
 <template>
- <div class="container">
+  <div class="container">
     <div class="row mt-4">
-      <div class="col-6 offset-3" v-if="auth_user == null">
+      <div class="col-6 offset-3">
         <h3>Add Topic:</h3>
-        <form>
+        <form @submit="onSubmit">
           <div class="form-row">
             <input
-              type="title"
+              v-model="topic.title"
               name="title"
               class="form-control"
               placeholder="Title..."
@@ -14,14 +14,14 @@
           </div>
           <div class="form-row">
             <input
-              type="desc"
+              v-model="topic.desc"
               name="desc"
               class="form-control"
               placeholder="Description..."
             />
           </div>
           <div class="form-row">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
       </div>
@@ -31,28 +31,36 @@
 
 <script>
 export default {
-  name: 'addTopic',
+  name: "addTopic",
   data: function () {
     return {
-      post: {
+      topic: {
         title: "",
-        body: "",
+        desc: "",
       },
     };
   },
   methods: {
-    addPost() {
-      if (this.post.title == "") {
+    onSubmit(e) {
+      e.preventDefault();
+      if (this.topic.title == "") {
+        alert("Title is empty.");
+        return;
+      }
+      if (this.topic.desc == "") {
+        alert("Description is empty.");
         return;
       }
       axios
-        .post("api/post", {
-          post: this.post,
+        .post("api/topic", {
+          title: this.topic.title,
+          desc: this.topic.desc,
         })
         .then((response) => {
           if (response.status == 201) {
-            this.post.title = "";
-            this.$emit('reload');
+            this.topic.title = "";
+            this.topic.desc = "";
+            this.$emit("reload");
           }
         })
         .catch((error) => {
