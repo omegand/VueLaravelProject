@@ -1,16 +1,15 @@
 <template>
   <div class="everything">
+    <nbar />
     <headvue />
+
     <router-view :user="user"></router-view>
     <footvue />
   </div>
 </template>
 <script>
 export default {
-  props: ['user'],
-  created() {
-    console.log(this.user);
-  },
+  props: ["user"],
 };
 </script>
 <style>

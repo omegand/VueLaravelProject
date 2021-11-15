@@ -13,6 +13,7 @@ Vue.component('topic', require('./components/topic.vue').default);
 Vue.component('Button', require('./components/Button.vue').default);
 Vue.component('footvue', require('./components/footer.vue').default);
 Vue.component('headvue', require('./components/header.vue').default);
+Vue.component('nbar', require('./components/navbar.vue').default);
 
 const app = new Vue({
     el: '#app',

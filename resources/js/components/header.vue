@@ -8,7 +8,6 @@ export default {};
 
 <style scoped>
 header {
-  margin-top: 50px;
   text-align: center;
   color: #e9a6a6;
   padding: 30px;
