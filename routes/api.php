@@ -35,5 +35,5 @@ Route::group(['prefix' => 'user', 'middleware' => ['json']], function() {
 
 Route::fallback(function(){
     return response()->json([
-        'message' => 'Route does not exist, check the syntax.'], 404);
+        'message' => 'Route does not exist, check the syntax.'], 400);
 });

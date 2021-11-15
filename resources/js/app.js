@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import router from './router';
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -9,8 +12,9 @@ Vue.component('app', require('./components/app.vue').default);
 Vue.component('topic', require('./components/topic.vue').default);
 Vue.component('Button', require('./components/Button.vue').default);
 Vue.component('footvue', require('./components/footer.vue').default);
+Vue.component('headvue', require('./components/header.vue').default);
 
 const app = new Vue({
     el: '#app',
-
+    router
 });

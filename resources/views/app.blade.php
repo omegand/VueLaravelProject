@@ -13,7 +13,7 @@
 
 <body>
     <div id="app">
-        <app :auth_user='@json($auth_user)'></app>
+        <app :user='@json($user)'></app>
     </div>
 </body>
 <script src="{{mix('js/app.js')}}"></script>

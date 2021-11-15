@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-6 offset-3" v-if="auth_user == null">
+      <div class="col-6 offset-3" >
         <h3>Login</h3>
         <form action="#" @submit.prevent="handleLogin">
           <div class="form-row">
@@ -59,9 +59,11 @@ export default {
         .then((response) => (this.topics = response.data));
     },
   },
-  props: ["auth_user"],
+  props: {
+    userVariable: [String, Object],
+  },
   created() {
-    console.log(this.auth_user);
+    console.log(this.userVariable);
   },
 };
 </script>
