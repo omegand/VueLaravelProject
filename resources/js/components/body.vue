@@ -1,7 +1,5 @@
 <template>
   <div class="everything">
-    <login v-if="user==null" />
-    <addtopic :topics="topics" v-on:reload="getList()" />
     <div style="text-align: center">
       <Button
         @toggle="toggleTopicList"
@@ -41,7 +39,7 @@ export default {
         });
     },
   },
-  props: ['user']
+  props: ["user"],
 };
 </script>
 <style >

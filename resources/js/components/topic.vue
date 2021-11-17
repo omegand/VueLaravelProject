@@ -2,11 +2,10 @@
   <div class="topic">
     <h2>{{ topic.title }}</h2>
     {{ topic.desc }}
-    <!--
+
     <button @click="removeTopic()" class="trash">
-      <font-awesome-icon icon="trash" />
+      <font-awesome-icon :icon="['fas', 'trash']" />
     </button>
-    -->
   </div>
 </template>
 
@@ -32,9 +31,8 @@ export default {
 <style scoped>
 .trash {
   color: red;
-  border: 5px;
-  background: #a19495;
-  outline: 0px;
+  background: #864879;
+  border: 0px;
 }
 .topic {
   background: #864879;
@@ -42,5 +40,6 @@ export default {
   margin: 15px;
   color: #e9a6a6;
   align-content: center;
+  border-radius: 8px;
 }
 </style>

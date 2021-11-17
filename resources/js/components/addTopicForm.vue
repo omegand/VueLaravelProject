@@ -60,7 +60,7 @@ export default {
           if (response.status == 201) {
             this.topic.title = "";
             this.topic.desc = "";
-            this.$emit("reload");
+            this.$forceUpdate()
           }
         })
         .catch((error) => {

@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('app')->with('user',  auth('sanctum')->user());
+        return view('app');
     }
 }

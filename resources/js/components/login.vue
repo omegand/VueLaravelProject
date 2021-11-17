@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-6 offset-3" >
+      <div class="col-6 offset-3" v-if="this.$user == ''">
         <h3>Login</h3>
         <form action="#" @submit.prevent="handleLogin">
           <div class="form-row">
@@ -26,6 +26,11 @@
             <button type="submit" class="btn btn-primary">Sign in</button>
           </div>
         </form>
+      </div>
+      <div class="col-6 offset-3" v-else>
+        <div class="text">
+          <h1>You are already logged in!</h1>
+        </div>
       </div>
     </div>
   </div>
@@ -59,16 +64,18 @@ export default {
         .then((response) => (this.topics = response.data));
     },
   },
-  props: {
-    userVariable: [String, Object],
-  },
+
   created() {
-    console.log(this.userVariable);
+    console.log(this.$user);
   },
 };
 </script>
 <style scoped>
 .form-row {
   margin-bottom: 12px;
+}
+.text {
+  color: #ffc2b4;
+  text-align: center;
 }
 </style>
