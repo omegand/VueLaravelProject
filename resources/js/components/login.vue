@@ -29,7 +29,7 @@
       </div>
       <div class="col-6 offset-3" v-else>
         <div class="text">
-          <h1>You are already logged in!</h1>
+          <h1>You are logged in!</h1>
         </div>
       </div>
     </div>
@@ -54,14 +54,11 @@ export default {
           .post("/login", this.formData)
           .then((response) => {
             console.log(response);
+            this.$forceUpdate();
+            this.$router.go();
           })
           .catch((error) => console.log(error));
       });
-    },
-    getTopics() {
-      axios
-        .get("/api/user/post")
-        .then((response) => (this.topics = response.data));
     },
   },
 

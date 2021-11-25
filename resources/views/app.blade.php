@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <meta name="user" content="{{ Auth::user('sanctum') }}">
+    <meta name="api-base-url" content="{{ url('') }}" />
+
 </head>
 
 <body>

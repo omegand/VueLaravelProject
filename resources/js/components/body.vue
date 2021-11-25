@@ -1,6 +1,6 @@
 <template>
   <div class="everything">
-    <div style="text-align: center">
+    <div style="text-align: center; padding: 15px">
       <Button
         @toggle="toggleTopicList"
         :text="showlist ? 'Close' : 'Show'"

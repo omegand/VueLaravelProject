@@ -1,7 +1,6 @@
 <template>
   <div class="everything">
     <nbar />
-    <headvue />
     <router-view></router-view>
     <footvue />
   </div>

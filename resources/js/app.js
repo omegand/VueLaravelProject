@@ -3,7 +3,10 @@ import router from './router';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
+import { BootstrapVue } from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 require('./bootstrap');
 
 library.add(fas)
@@ -17,7 +20,6 @@ Vue.component('app', require('./components/app.vue').default);
 Vue.component('topic', require('./components/topic.vue').default);
 Vue.component('Button', require('./components/Button.vue').default);
 Vue.component('footvue', require('./components/footer.vue').default);
-Vue.component('headvue', require('./components/header.vue').default);
 Vue.component('nbar', require('./components/navbar.vue').default);
 
 const userinfo = document.querySelector("meta[name='user']").getAttribute('content');

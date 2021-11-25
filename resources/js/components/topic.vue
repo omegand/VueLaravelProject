@@ -18,7 +18,7 @@ export default {
         .delete("api/topic/" + this.topic.id)
         .then((response) => {
           if (response.status == 200) {
-            this.$emit("changed");
+            alert("Istrinta.");
           }
         })
         .catch((error) => {
