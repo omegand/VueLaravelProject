@@ -1,8 +1,10 @@
 <template>
-  <footer>
-    <p>Copyright &copy; 2021</p>
-    <a href="/about">About</a>
-  </footer>
+  <div class="footer">
+    Copyright &copy; 2021
+    <router-link style="text-decoration: none; color: inherit" to="/about">
+      About
+    </router-link>
+  </div>
 </template>
 
 <script>
@@ -10,12 +12,9 @@ export default {};
 </script>
 
 <style scoped>
-a {
-  color: rebeccapurple;
-}
-footer {
+.footer {
   margin-top: 50px;
   text-align: center;
-  color: #e9a6a6;
+  color: #ddaadd;
 }
 </style>

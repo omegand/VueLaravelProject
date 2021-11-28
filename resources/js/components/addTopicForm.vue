@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row mt-4">
-      <div class="col-6 offset-3">
-        <h3>Add Topic:</h3>
+      <div class="col-6 offset-3" v-if="this.$user.admin">
+        <h3 style="color: #e9a6a6; text-align: center">Adding a Topic</h3>
         <form @submit="onSubmit">
           <div class="form-row">
             <input
@@ -60,7 +60,7 @@ export default {
           if (response.status == 201) {
             this.topic.title = "";
             this.topic.desc = "";
-            this.$forceUpdate()
+            this.$forceUpdate();
           }
         })
         .catch((error) => {
@@ -73,5 +73,6 @@ export default {
 <style scoped>
 .form-row {
   margin-bottom: 12px;
+  text-align: center;
 }
 </style>

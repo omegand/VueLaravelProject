@@ -1,15 +1,6 @@
 <template>
-  <div class="everything">
-    <div style="text-align: center; padding: 15px">
-      <Button
-        @toggle="toggleTopicList"
-        :text="showlist ? 'Close' : 'Show'"
-        :class="showlist ? 'btn btn-success' : 'btn btn-dark'"
-      />
-    </div>
-    <div v-if="showlist" class="row">
-      <topiclist :topics="topics" v-on:reload="getList()" />
-    </div>
+  <div>
+    <topiclist :topics="topics" :posts="posts" v-on:reload="getBoth()" />
   </div>
 </template>
  
@@ -17,17 +8,15 @@
 export default {
   created() {
     this.getList();
+    this.getPostList();
   },
   data: function () {
     return {
       topics: [],
-      showlist: false,
+      posts: [],
     };
   },
   methods: {
-    toggleTopicList() {
-      this.showlist = !this.showlist;
-    },
     getList() {
       axios
         .get("api/topic")
@@ -38,8 +27,21 @@ export default {
           console.log(error);
         });
     },
+    getPostList() {
+      axios
+        .get("api/topic/post")
+        .then((response) => {
+          this.posts = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getBoth() {
+      this.getList();
+      this.getPostList();
+    },
   },
-  props: ["user"],
 };
 </script>
 <style >

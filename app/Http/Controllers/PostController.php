@@ -18,6 +18,14 @@ class PostController extends Controller
             return $posts;
         }
     }
+    public function getAllPosts()
+    {
+        $posts = Post::all();
+        if ($posts->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else {
+            return $posts;
+        }
+    }
     public function getUserPosts(Request $request)
     {
         if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 403);

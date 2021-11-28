@@ -1,9 +1,8 @@
 <template>
-  <div class="topic">
-    <h2>{{ topic.title }}</h2>
-    {{ topic.desc }}
-
-    <button v-if="$user.admin" @click="removeTopic()" class="trash">
+  <div class="post">
+    <h4>{{ post.title }}</h4>
+    {{ post.body }}
+    <button v-if="$user.admin" @click="removePost()" class="trash">
       <font-awesome-icon :icon="['fas', 'trash']" />
     </button>
   </div>
@@ -11,11 +10,11 @@
 
 <script>
 export default {
-  props: ["topic"],
+  props: ["post"],
   methods: {
-    removeTopic() {
+    removePost() {
       axios
-        .delete("api/topic/" + this.topic.id)
+        .delete("api/topic/post/" + this.post.id)
         .then((response) => {
           if (response.status == 200) {
             this.$emit("changed");
@@ -34,7 +33,7 @@ export default {
   background: #864879;
   border: 0px;
 }
-.topic {
+.post {
   background: #864879;
   padding: 5px;
   margin: 15px;

@@ -21,6 +21,8 @@ Vue.component('topic', require('./components/topic.vue').default);
 Vue.component('Button', require('./components/Button.vue').default);
 Vue.component('footvue', require('./components/footer.vue').default);
 Vue.component('nbar', require('./components/navbar.vue').default);
+Vue.component('about', require('./components/about.vue').default);
+Vue.component('post', require('./components/post.vue').default);
 
 const userinfo = document.querySelector("meta[name='user']").getAttribute('content');
 if (userinfo == "") Vue.prototype.$user = ""
