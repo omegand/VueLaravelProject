@@ -2,11 +2,11 @@
   <div>
     <div v-if="this.$user.admin" class="row" style="background: #1f1d36">
       <div class="col-4 offset-4 mt-5 mb-5">
-        <h3 style="color: #e9a6a6; text-align: center">Adding a Topic</h3>
+        <h3 style="color: #e9a6a6; text-align: center">Adding a post</h3>
         <form @submit="onSubmit">
           <div class="form-row">
             <input
-              v-model="topic.title"
+              v-model="post.title"
               name="title"
               class="form-control"
               placeholder="Title..."
@@ -14,11 +14,14 @@
           </div>
           <div class="form-row">
             <input
-              v-model="topic.desc"
-              name="desc"
+              v-model="post.body"
+              name="body"
               class="form-control"
-              placeholder="Description..."
+              placeholder="Body..."
             />
+          </div>
+          <div class="form-row">
+            <b-form-select v-model="selected" :options="topics"></b-form-select>
           </div>
           <div class="form-row">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -32,35 +35,56 @@
 
 <script>
 export default {
-  name: "addTopic",
+  created() {
+    this.getList();
+    console.log(this.topics);
+  },
+  name: "addpost",
   data: function () {
     return {
-      topic: {
+      selected: null,
+      topics: [],
+      post: {
         title: "",
-        desc: "",
+        body: "",
+        topicid: "",
       },
     };
   },
   methods: {
+    getList() {
+      axios
+        .get("api/topic")
+        .then((response) => {
+          this.topics = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     onSubmit(e) {
       e.preventDefault();
-      if (this.topic.title == "") {
+      if (this.post.title == "") {
         alert("Title is empty.");
         return;
       }
-      if (this.topic.desc == "") {
-        alert("Description is empty.");
+      if (this.post.body == "") {
+        alert("Body is empty.");
+        return;
+      }
+      if (this.post.topicid == "") {
+        alert("No selected topic.");
         return;
       }
       axios
-        .post("api/topic", {
-          title: this.topic.title,
-          desc: this.topic.desc,
+        .post("api/topic/post", {
+          title: this.post.title,
+          body: this.post.body,
         })
         .then((response) => {
           if (response.status == 201) {
-            this.topic.title = "";
-            this.topic.desc = "";
+            this.post.title = "";
+            this.post.body = "";
             this.$forceUpdate();
           }
         })

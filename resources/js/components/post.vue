@@ -16,9 +16,7 @@ export default {
       axios
         .delete("api/topic/post/" + this.post.id)
         .then((response) => {
-          if (response.status == 200) {
-            this.$emit("changed");
-          }
+          this.$emit("changed");
         })
         .catch((error) => {
           console.log(error);

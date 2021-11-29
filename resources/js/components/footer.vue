@@ -13,8 +13,10 @@ export default {};
 
 <style scoped>
 .footer {
-  margin-top: 50px;
+  padding-top: 20px;
   text-align: center;
   color: #ddaadd;
+  background: #3f3351;
+  box-shadow: 0 50vh 0 50vh #3f3351;
 }
 </style>

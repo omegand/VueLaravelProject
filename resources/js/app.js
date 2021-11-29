@@ -15,6 +15,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.component('login', require('./components/login.vue').default);
 Vue.component('addtopic', require('./components/addTopicForm.vue').default);
+Vue.component('addpost', require('./components/addPostForm.vue').default);
 Vue.component('topiclist', require('./components/topicList.vue').default);
 Vue.component('app', require('./components/app.vue').default);
 Vue.component('topic', require('./components/topic.vue').default);

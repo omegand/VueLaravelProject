@@ -1,5 +1,5 @@
 <template>
-  <div class="everything">
+  <div class="main">
     <nbar />
     <router-view></router-view>
     <footvue />
@@ -9,9 +9,13 @@
 export default {};
 </script>
 <style>
-.everything {
-  background: #1f1d36;
+.main {
   width: 100%;
   height: 100%;
+  background: #3f3351;
+}
+.image {
+  max-width: 150%;
+  background: black;
 }
 </style>

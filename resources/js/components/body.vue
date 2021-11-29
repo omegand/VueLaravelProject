@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height: 83%; overflow: auto; overflow-x: hidden">
     <topiclist :topics="topics" :posts="posts" v-on:reload="getBoth()" />
   </div>
 </template>
@@ -50,5 +50,6 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
+  position: fixed;
 }
 </style>
