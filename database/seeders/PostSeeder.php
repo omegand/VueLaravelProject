@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
         Post::create(
             [
                 'body' => 'Nesiseka man išviso',
-                'title' => 'Bandymas1',
+                'title' => 'Renginių postas1',
                 'topicid' => '1',
                 'userid' => '1',
             ]
@@ -25,7 +25,7 @@ class PostSeeder extends Seeder
         Post::create(
             [
                 'body' => 'O gal sekasi?',
-                'title' => 'Bandymas2',
+                'title' => 'Konkursu postas1',
                 'topicid' => '2',
                 'userid' => '1'
             ]
@@ -33,7 +33,7 @@ class PostSeeder extends Seeder
         Post::create(
             [
                 'body' => 'Nesiseka man išviso',
-                'title' => 'Antro vartotojo postai',
+                'title' => 'Renginių postas2',
                 'topicid' => '1',
                 'userid' => '2',
             ]
@@ -41,7 +41,7 @@ class PostSeeder extends Seeder
         Post::create(
             [
                 'body' => 'O gal sekasi?',
-                'title' => 'Dar postų antram',
+                'title' => 'Konkursu postas2',
                 'topicid' => '2',
                 'userid' => '2'
             ]

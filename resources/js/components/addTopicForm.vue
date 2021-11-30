@@ -65,7 +65,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error);
+          alert("Topic already exists.");
         });
     },
   },

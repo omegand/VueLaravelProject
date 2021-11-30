@@ -16,7 +16,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('login', require('./components/login.vue').default);
 Vue.component('addtopic', require('./components/addTopicForm.vue').default);
 Vue.component('addpost', require('./components/addPostForm.vue').default);
-Vue.component('topiclist', require('./components/topicList.vue').default);
 Vue.component('app', require('./components/app.vue').default);
 Vue.component('topic', require('./components/topic.vue').default);
 Vue.component('Button', require('./components/Button.vue').default);
@@ -24,6 +23,9 @@ Vue.component('footvue', require('./components/footer.vue').default);
 Vue.component('nbar', require('./components/navbar.vue').default);
 Vue.component('about', require('./components/about.vue').default);
 Vue.component('post', require('./components/post.vue').default);
+Vue.component('userlist', require('./components/userList.vue').default);
+Vue.component('user', require('./components/user.vue').default);
+Vue.component('register', require('./components/registerForm.vue').default);
 
 const userinfo = document.querySelector("meta[name='user']").getAttribute('content');
 if (userinfo == "") Vue.prototype.$user = ""

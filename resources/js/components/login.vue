@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div style="background: #1f1d36; padding: 9em">
     <div class="row mt-4">
       <div class="col-6 offset-3" v-if="this.$user == ''">
-        <h3>Login</h3>
+        <h3 class="text2">Login Form</h3>
         <form action="#" @submit.prevent="handleLogin">
           <div class="form-row">
             <input
@@ -74,5 +74,9 @@ export default {
 .text {
   color: #ffc2b4;
   text-align: center;
+}
+.text2 {
+  color: #ffc2b4;
+  text-align: left;
 }
 </style>

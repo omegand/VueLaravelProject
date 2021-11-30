@@ -24,11 +24,7 @@ Route::prefix('/topic')->group(function () {
     Route::delete('/{id}', [TopicController::class, 'deleteTopic']);
 });
 
-
-
-
 Route::group(['prefix' => 'user', 'middleware' => ['json']], function () {
-    Route::get('/post', [PostController::class, 'getUserPosts']);
     Route::get('/', [UserController::class, 'getusers']);
     Route::get('/{id}', [UserController::class, 'getuser']);
     Route::post('/', [UserController::class, 'saveuser']);

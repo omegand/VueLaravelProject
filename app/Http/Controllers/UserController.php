@@ -12,15 +12,15 @@ class UserController extends Controller
 {
     public function getusers()
     {
-        $topics = User::all();
-        if ($topics->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
-        else return $topics;
+        $users = User::all();
+        if ($users->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else return $users;
     }
     public function getuser($id)
     {
-        $topic = User::where('id', $id)->get();
-        if ($topic->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
-        else return $topic;
+        $user = User::where('id', $id)->get();
+        if ($user->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
+        else return $user;
     }
 
     public function saveuser(Request $request)
@@ -48,15 +48,13 @@ class UserController extends Controller
         if ($curr) {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required'
+                'email' => 'required|email'
             ]);
             if ($validator->fails()) {
                 return response()->json(['Klaida' => "Bloga sintaksė"], 400);
             };
             $curr->name = $request->name;
             $curr->email = $request->email;
-            $curr->password = $request->password;
             $curr->save();
             return $curr;
         }
@@ -65,9 +63,9 @@ class UserController extends Controller
 
     public function deleteuser($id)
     {
-        $topic = User::find($id);
-        if ($topic) {
-            $topic->delete();
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
             return response()->json(['Sekminga' => "Ištrinta."]);
         }
         return response()->json(['Klaida' => "Neegzistuoja tema arba blogas route."], 404);

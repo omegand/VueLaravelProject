@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        $this->call(PostSeeder::class);
-        $this->call(TopicSeeder::class);
         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10) . '@gmail.com',
@@ -30,5 +28,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'admin' => false,
         ]);
+        $this->call(PostSeeder::class);
+        $this->call(TopicSeeder::class);
     }
 }
