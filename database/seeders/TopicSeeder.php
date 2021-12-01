@@ -15,12 +15,12 @@ class TopicSeeder extends Seeder
     public function run()
     {
         Topic::create([
-            'title' => 'Renginiai',
-            'desc' => 'Apie kažką tikrai kalbama',
+            'title' => 'Events',
+            'desc' => 'Express your recent happenings!',
         ]);
         Topic::create([
-            'title' => 'Konkursai',
-            'desc' => 'Nepatinka man konkuruoti',
+            'title' => 'Paranoia',
+            'desc' => 'If you are going insane, this is the right place.',
         ]);
     }
 }

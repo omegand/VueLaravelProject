@@ -6,7 +6,7 @@
     <b-button v-if="$user.admin" @click="showMsgBoxOne" class="trash">
       <font-awesome-icon :icon="['fas', 'trash']" />
     </b-button>
-    <b-button v-if="$user.admin" @clic="EdittingUser" class="edit">
+    <b-button v-if="$user.admin" @click="EdittingUser" class="edit">
       <font-awesome-icon :icon="['fas', 'edit']" />
     </b-button>
 

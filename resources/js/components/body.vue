@@ -1,5 +1,10 @@
 <template>
   <div style="height: 83%; overflow: auto; overflow-x: hidden">
+    <img
+      class="image"
+      src="https://i.imgur.com/7nesmB2.jpg"
+      referrerpolicy="no-referrer"
+    />
     <div class="row" style="background: #1f1d36">
       <div class="col-md-3 offset-md-1">
         <topic
@@ -74,13 +79,6 @@ export default {
 };
 </script>
 <style >
-.everything {
-  background: #1f1d36;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-}
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s ease-in-out;
@@ -89,5 +87,10 @@ export default {
 .fade-leave-to {
   opacity: 0;
   transform: translateX(-200px);
+}
+.image {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 </style>

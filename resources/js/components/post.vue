@@ -125,11 +125,11 @@ export default {
 <style scoped>
 .trash {
   color: red;
-  background: #864879;
+  background: #58127f;
   border: 0px;
 }
 .post {
-  background: #864879;
+  background: #58127f;
   padding: 5px;
   margin: 15px;
   color: #e9a6a6;
@@ -138,7 +138,7 @@ export default {
 }
 .edit {
   color: gray;
-  background: #864879;
+  background: #58127f;
   border: 0px;
 }
 </style>

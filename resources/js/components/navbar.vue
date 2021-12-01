@@ -93,4 +93,9 @@ export default {
 };
 </script>
 <style scoped>
+img {
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
 </style>

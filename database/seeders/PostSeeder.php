@@ -16,32 +16,32 @@ class PostSeeder extends Seeder
     {
         Post::create(
             [
-                'body' => 'Nesiseka man išviso',
-                'title' => 'Renginių postas1',
+                'body' => 'Going from child, to childish, to childlike is only a matter of time.',
+                'title' => 'Ramblings of the old',
                 'topicid' => '1',
                 'userid' => '1',
             ]
         );
         Post::create(
             [
-                'body' => 'O gal sekasi?',
-                'title' => 'Konkursu postas1',
-                'topicid' => '2',
+                'body' => 'He had a wall full of masks so she could wear a different face every day.',
+                'title' => 'Crazy mother',
+                'topicid' => '1',
                 'userid' => '1'
             ]
         );
         Post::create(
             [
-                'body' => 'Nesiseka man išviso',
-                'title' => 'Renginių postas2',
-                'topicid' => '1',
+                'body' => 'Separation anxiety is what happens when you cant find your phone.',
+                'title' => 'My life',
+                'topicid' => '2',
                 'userid' => '2',
             ]
         );
         Post::create(
             [
-                'body' => 'O gal sekasi?',
-                'title' => 'Konkursu postas2',
+                'body' => 'The father handed each child a roadmap at the beginning of the 2-day road trip and explained it was so they could find their way home.',
+                'title' => 'The universe is telling me something',
                 'topicid' => '2',
                 'userid' => '2'
             ]
