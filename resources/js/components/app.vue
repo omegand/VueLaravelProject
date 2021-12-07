@@ -10,7 +10,10 @@
 <script>
 export default {};
 </script>
-<style>
+<style >
+body {
+  overflow: hidden;
+}
 .main {
   background: #3f3351;
 }

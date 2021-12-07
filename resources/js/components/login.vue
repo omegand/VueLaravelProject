@@ -49,6 +49,10 @@ export default {
   },
   methods: {
     handleLogin() {
+      if (this.formData.password == "" || this.formData.email == "") {
+        alert("Fill out all the fields.");
+        return;
+      }
       axios.get("/sanctum/csrf-cookie").then((response) => {
         axios
           .post("/login", this.formData)
@@ -57,7 +61,9 @@ export default {
             this.$forceUpdate();
             this.$router.go();
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            alert("Neteisingi duomenys");
+          });
       });
     },
   },

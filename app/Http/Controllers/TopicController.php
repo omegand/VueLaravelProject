@@ -13,7 +13,6 @@ class TopicController extends Controller
     {
         $topics = Topic::all();
         if ($topics->isEmpty()) return response()->json(['Klaida' => "Nėra duomenų arba blogas route."], 404);
-
         else return $topics;
     }
     public function getTopic($id)
@@ -25,6 +24,8 @@ class TopicController extends Controller
 
     public function saveTopic(Request $request)
     {
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
+        if (auth('sanctum')->user()->admin == 0) return response()->json(['Klaida' => "Neturima teisių."], 403);
         $new = new Topic;
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -41,6 +42,8 @@ class TopicController extends Controller
 
     public function updateTopic(Request $request, $id)
     {
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
+        if (auth('sanctum')->user()->admin == 0) return response()->json(['Klaida' => "Neturima teisių."], 403);
         $curr = Topic::find($id);
         if ($curr) {
             $validator = Validator::make($request->all(), [
@@ -55,10 +58,13 @@ class TopicController extends Controller
             $curr->save();
             return $curr;
         }
-        return response()->json(['Klaida' => "Neegzistuoja arba blogas route."], 404);    }
+        return response()->json(['Klaida' => "Neegzistuoja arba blogas route."], 404);
+    }
 
     public function deleteTopic($id)
     {
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
+        if (auth('sanctum')->user()->admin == 0) return response()->json(['Klaida' => "Neturima teisių."], 403);
         $topic = Topic::find($id);
         if ($topic) {
             $topic->delete();

@@ -1,8 +1,8 @@
 <template>
-  <div style="height: 83%; overflow: auto; overflow-x: hidden">
+  <div>
     <img
       class="image"
-      src="https://i.imgur.com/7nesmB2.jpg"
+      src="https://i.imgur.com/lNWURRn.png"
       referrerpolicy="no-referrer"
     />
     <div class="row" style="background: #1f1d36">
@@ -89,8 +89,7 @@ export default {
   transform: translateX(-200px);
 }
 .image {
+  max-width: 100%;
   width: 100%;
-  object-fit: cover;
-  object-position: top;
 }
 </style>

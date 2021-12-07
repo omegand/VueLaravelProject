@@ -44,6 +44,8 @@ class UserController extends Controller
 
     public function updateuser(Request $request, $id)
     {
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
+        if (auth('sanctum')->user()->admin == 0) return response()->json(['Klaida' => "Neturima teisių."], 403);
         $curr = User::find($id);
         if ($curr) {
             $validator = Validator::make($request->all(), [
@@ -63,6 +65,8 @@ class UserController extends Controller
 
     public function deleteuser($id)
     {
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
+        if (auth('sanctum')->user()->admin == 0) return response()->json(['Klaida' => "Neturima teisių."], 403);
         $user = User::find($id);
         if ($user) {
             $user->delete();

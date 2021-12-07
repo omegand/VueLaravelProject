@@ -33,7 +33,7 @@ class PostController extends Controller
 
     public function savePost(Request $request)
     {
-        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 404);
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'body' => 'required',
@@ -53,7 +53,7 @@ class PostController extends Controller
     }
     public function updatePost(Request $request, $id)
     {
-        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 404);
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
         $currpost = Post::where('id', $id)->get()->first();
         if ($currpost) {
             $validator = Validator::make($request->all(), [
@@ -72,7 +72,7 @@ class PostController extends Controller
     }
     public function deletePost($id)
     {
-        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 404);
+        if (auth('sanctum')->user() == null) return response()->json(['Klaida' => "Neprisijunges."], 401);
         $post = Post::find($id);
         if ($post) {
             $post->delete();
