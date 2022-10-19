@@ -22,7 +22,7 @@ Not available for public use, only to be used as a reference.
 
 ## Versioning
 
-*[GitHub Desktop](https://desktop.github.com/) for versioning.
+* [GitHub Desktop](https://desktop.github.com/) for versioning.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/1024px-Github-desktop-logo-symbol.svg.png" width="150" />
 
