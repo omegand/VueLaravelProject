@@ -1,10 +1,10 @@
 # Yet Another Forum
 
-A website project made for KTU website creation course
+A website project made for KTU website creation course.
 
 ## Installing
 
-Good luck lol
+Not available for public use, only to be used as a reference. 
 
 ## Built With
 * [phpMyAdmin](https://www.phpmyadmin.net/) - Backend database
@@ -17,14 +17,14 @@ Good luck lol
  
 * [Vue.js](https://vuejs.org/) - Frontend framework
 
- <img src="https://vuejs.org/images/logo.svg" width="150" />
+ <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width="150" />
 
 
 ## Versioning
 
-* Using [GitHub Desktop](https://desktop.github.com/) for versioning. (amazing tool btw)
+*[GitHub Desktop](https://desktop.github.com/) for versioning.
 
-<img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" width="150" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/1024px-Github-desktop-logo-symbol.svg.png" width="150" />
 
 ## Authors
 
